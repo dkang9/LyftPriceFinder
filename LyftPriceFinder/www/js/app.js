@@ -43,7 +43,17 @@ angular.module('lyftpricefinder', ['ionic','lyftpricefinder.controllers'])
     }
   })
 
-  $urlRouterProvider.otherwise('/tab/map');
+    .state('tab.heatmap', {
+    url: '/heatmap',
+    views: {
+      'tab-heatmap': {
+        templateUrl: 'templates/heatmap.html',
+        controller: 'HeatMapCtrl'
+      }
+    }
+  })
+
+  $urlRouterProvider.otherwise('/tab/heatmap');
 
 })
 
