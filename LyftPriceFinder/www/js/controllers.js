@@ -15,6 +15,14 @@ Controller for the map page
 })
 
 /*
+Controller for the map page
+*/
+.controller('DirectionsCtrl', function($scope) {
+
+})
+
+
+/*
 Controller for our tab bar
 */
 .controller('TabsCtrl', function($scope) {
