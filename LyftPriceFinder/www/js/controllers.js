@@ -49,7 +49,7 @@ Controller for the map page
             "start_lng": s_lng, 
             "end_lat": endLat, 
             "end_lng": endLong, 
-          "primetime_percentage": "0%", 
+          "primetime_percentage": arr[arr.length-1].primetime_percentage, 
           "estimated_cost_cents": avgFare
         };
         estimates.push(estimate);
@@ -58,7 +58,6 @@ Controller for the map page
           minFare = avgFare;
           minObj = estimate;
         }
-
         currentAngle += degreesPerPoint;
 
       }
