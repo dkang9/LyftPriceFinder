@@ -187,7 +187,7 @@ Controller for the directions page
 
         for  (i=1; i<6; i++) {
           var marker = new google.maps.Marker({
-              position: {lat: $rootScope.result[i-1]["start_lat"], lng:  $rootScope.result[i]["start_long"]},
+              position: {lat: $rootScope.result[i]["start_lat"], lng:  $rootScope.result[i]["start_lng"]},
               label: labels[i-1],
               map: map,
               title: 'Hello World!'
