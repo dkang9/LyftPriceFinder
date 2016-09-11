@@ -50,30 +50,30 @@ Controller for the map page
   var minFare = Number.MAX_VALUE;
   var minObj = {};
 
-  for (var rad = .1; rad <= radius; rad += 0.1) {
+  for (var rad = .1; rad <= radius; rad += radius/4.0 {
   
     for(var i=0; i < numberOfPoints; i++) {
-        var x2 = Math.cos(currentAngle) * rad;
-        var y2 = Math.sin(currentAngle) * rad;
+      var x2 = Math.cos(currentAngle) * rad;
+      var y2 = Math.sin(currentAngle) * rad;
 
-        var s_lat = startLat+x2;
-        var s_lng = startLong+y2;
+      var s_lat = startLat+x2;
+      var s_lng = startLong+y2;
 
-    xhr = new XMLHttpRequest();
-    xhr.open("GET", "https://api.lyft.com/v1/cost?start_lat=" + (startLat+.01) + "&start_lng=" + startLong + "&end_lat=" + endLat + "&end_lng=" + endLong + "", false);
-    xhr.setRequestHeader("Authorization", "Bearer " + access_token);
-    xhr.send();
-    var arr = JSON.parse(xhr.response).cost_estimates;
-    var max = arr[arr.length-1].estimated_cost_cents_max;
-    var min = arr[arr.length-1].estimated_cost_cents_min;
-    var avgFare = (max*1.0 + min)/2;
-    console.log(avgFare);
+      xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://api.lyft.com/v1/cost?start_lat=" + (startLat+.01) + "&start_lng=" + startLong + "&end_lat=" + endLat + "&end_lng=" + endLong + "", false);
+      xhr.setRequestHeader("Authorization", "Bearer " + access_token);
+      xhr.send();
+      var arr = JSON.parse(xhr.response).cost_estimates;
+      var max = arr[arr.length-1].estimated_cost_cents_max;
+      var min = arr[arr.length-1].estimated_cost_cents_min;
+      var avgFare = (max*1.0 + min)/2;
+      console.log(avgFare);
 
-        var estimate = {
-          "start_lat": s_lat, 
-          "start_lng": s_lng, 
-          "end_lat": endLat, 
-          "end_lng": endLong, 
+      var estimate = {
+        "start_lat": s_lat, 
+        "start_lng": s_lng, 
+        "end_lat": endLat, 
+        "end_lng": endLong, 
         "primetime_percentage": arr[arr.length-1].primetime_percentage, 
         "estimated_cost_cents": avgFare
       };
@@ -88,6 +88,15 @@ Controller for the map page
     }
     currentAngle = 0;
   }
+
+  estimates.sort(function(a,b) {
+    if(a.primetime_percentage < b.primetime_percentage)
+      return -1;
+    else if(a.primetime_percentage > b.primetime_percentage)
+      return 1;
+    else
+      return 0;
+  });
 
   var toRet = {
     "estimates": estimates,
