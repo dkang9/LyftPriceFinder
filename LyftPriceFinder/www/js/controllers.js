@@ -60,7 +60,7 @@ Controller for the map page
   endLong = loc.lng;
   console.log(endLat + "   " + endLong);
 
-  var numberOfPoints = 8;
+  var numberOfPoints = 6;
   var degreesPerPoint = 360 / numberOfPoints;
   var currentAngle = 0;
 
@@ -68,7 +68,7 @@ Controller for the map page
   var minFare = Number.MAX_VALUE;
   var minObj = {};
 
-  for (var rad = .1; rad <= radius; rad += 0.1) {
+  for (var rad = .1; rad <= radius; rad += 0.2) {
   
     for(var i=0; i < numberOfPoints; i++) {
         var x2 = Math.cos(currentAngle) * rad;
