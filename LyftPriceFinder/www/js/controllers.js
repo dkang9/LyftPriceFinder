@@ -1,8 +1,8 @@
 angular.module('lyftpricefinder.controllers', ['ionic'])
 .run(function($rootScope, $ionicLoading, $compile) {
-    $rootScope.starter ="start";
-    $rootScope.end = "end";
-    $rootScope.radius = 0
+    $rootScope.starter ="1000 morewood ave";
+    $rootScope.end = "6607 woodwell street";
+    $rootScope.radius = .5
     $rootScope.result = ""
 
 })
@@ -15,7 +15,7 @@ Controller for the map page
   $scope.makeLyftAPICalls = function() {
   //this token needs to be updated after authentication expires
   var access_token = "gAAAAABX1IBbdgXV30khHMX5AGjIGdJYQoTcGZWYCvimbyysX7boysJshFGFdvmkEP01_glyy2w87ooD72qxqniFyVfnBEOHott2s6_q4DYtau1BHYBiHBaQIwFaf08IhkN0ubls6-rIDr1kc4O15dW_g_XipxjWcFWwJJtG80mVRF6mFV_fLDS235zUEZbwcfj4tH28kI2MLHibNKhLTQRNdLcYT_A25A==";
-  var startAddress =  $scope.start.split(" ").join("+");
+  var startAddress =  $scope.starter.split(" ").join("+");
   var endAddress = $scope.end.split(" ").join("+");
   var radius = $scope.radius
   var apiKey = "AIzaSyDoGtHRKWmO2BM8Pw9zpkrzv9UgxOxZxOM"
@@ -148,12 +148,9 @@ Controller for the heatmap page
 Controller for the directions page
 */
 .controller('DirectionsCtrl', function($scope, $ionicLoading, $compile,$rootScope) {
-  console.log("helloa")
 
   $scope.makeGoogleMap = function(num = 0) {
-    console.log("hello1")
       if (num==0) {
-        console.log("hello")
         var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
  
         var mapOptions = {
@@ -188,16 +185,35 @@ Controller for the directions page
         };
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var result = JSON.parse($rootScope.result);
 
-        for  (i=1; i<6; i++) {
+console.log(result)
           var marker = new google.maps.Marker({
-              position: {lat: $rootScope.result[i]["start_lat"], lng:  $rootScope.result[i]["start_lng"]},
-              label: labels[i-1],
+              position: {lat: parseInt(result.min1.start_lat.toString()), lng:  parseInt(result.min1.start_lng.toString())},
               map: map,
               title: 'Hello World!'
           });
-        }
- 
+                    var marker = new google.maps.Marker({
+              position: {lat: parseInt(result["min2"]["start_lat"]), lng:  parseInt(result["min2"]["start_lng"])},
+              map: map,
+              title: 'Hello World!'
+          });
+                              var marker = new google.maps.Marker({
+              position: {lat: parseInt(result["min3"]["start_lat"]), lng:  parseInt(result["min3"]["start_lng"])},
+              map: map,
+              title: 'Hello World!'
+          });
+                                        var marker = new google.maps.Marker({
+              position: {lat: parseInt(result["min4"]["start_lat"]), lng:  parseInt(result["min4"]["start_lng"])},
+              map: map,
+              title: 'Hello World!'
+          });
+                                                  var marker = new google.maps.Marker({
+              position: {lat: parseInt(result["min5"]["start_lat"]), lng:  parseInt(result["min5"]["start_lng"])},
+              map: map,
+              title: 'Hello World!'
+          });
+   console.log("helloa")
         navigator.geolocation.getCurrentPosition(function(pos) {
             map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
             var myLocation = new google.maps.Marker({
