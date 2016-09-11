@@ -63,7 +63,7 @@ angular.module('lyftpricefinder', ['ionic','lyftpricefinder.controllers'])
     }
   })
 
-  $urlRouterProvider.otherwise('/tab/map');
+  $urlRouterProvider.otherwise('/tab/directions');
 
 })
 

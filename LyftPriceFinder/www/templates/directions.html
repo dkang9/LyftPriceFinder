@@ -5,7 +5,7 @@
   <div id="map"></div>
 </ion-content>
 
-  <div>
+  <div ng-controller="DirectionsCtrl">
   <form ng-submit="submit()" ng-controller="MapCtrl">
   	<label class="item item-input" id = "start">
 			<span class="input-label">Starting Location:</span>
@@ -19,7 +19,7 @@
 		  <span class="input-label">Maximum Distance (Mile):</span>
 		  <input type="number" ng-model="radius">
 		</label>
-		<button  type="submit" id="submit" value="Submit" class="button button-positive" ng-click="makeLyftAPICalls()">
+		<button  type="submit" id="submit" value="Submit" class="button button-positive" ng-click="makeLyftAPICalls() ; makeGoogleMap(1)">
 			Submit
 		</button>	
   </div>
