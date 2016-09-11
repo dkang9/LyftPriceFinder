@@ -1,9 +1,34 @@
 angular.module('lyftpricefinder.controllers', ['ionic'])
+.run(function($rootScope, $ionicLoading, $compile) {
+    $rootScope.starter ="start";
+    $rootScope.end = "end";
+    $rootScope.radius = "radius"
+
+    $rootScope.googleMap = function(mapScope) {
+      var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
+      var mapOptions = {
+            center: myLatlng,
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        mapScope = map;     
+                navigator.geolocation.getCurrentPosition(function(pos) {
+                map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            var myLocation = new google.maps.Marker({
+                position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                map: map,
+                title: "My Location"
+            });
+        });
+             
+}
+})
+
 
 /*
 Controller for the map page
 */
-.controller('MapCtrl', function($scope) {
+.controller('MapCtrl', function($scope,$rootScope) {
   $scope.makeLyftAPICalls = function() {
   //this token needs to be updated after authentication expires
   var access_token = "gAAAAABX1IBbdgXV30khHMX5AGjIGdJYQoTcGZWYCvimbyysX7boysJshFGFdvmkEP01_glyy2w87ooD72qxqniFyVfnBEOHott2s6_q4DYtau1BHYBiHBaQIwFaf08IhkN0ubls6-rIDr1kc4O15dW_g_XipxjWcFWwJJtG80mVRF6mFV_fLDS235zUEZbwcfj4tH28kI2MLHibNKhLTQRNdLcYT_A25A==";
@@ -68,6 +93,8 @@ Controller for the map page
     "estimates": estimates,
     "minFare": minObj
   };
+  $rootScope.starter = (minObj["start_lat"],minObj["start_lng"])
+  $rootScope.end = (minObj["end_lat"],minObj["end_lng"])
   console.log(toRet);
   return JSON.stringify(toRet);
 
@@ -105,7 +132,9 @@ Controller for the heatmap page
 /*
 Controller for the directions page
 */
-.controller('DirectionsCtrl', function($scope, $ionicLoading, $compile) {
+.controller('DirectionsCtrl', function($scope, $ionicLoading, $compile,$rootScope) {
+  $scope.makeGoogleMap = function(num = 0) {
+      if (num==0) {
         var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
  
         var mapOptions = {
@@ -126,6 +155,13 @@ Controller for the directions page
         });
  
         $scope.map = map;
+    }
+
+    else {
+      //function that shows the directions google maps api that uses the root vars
+    }
+
+}
 })
 
 
