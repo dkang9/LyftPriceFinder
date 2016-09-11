@@ -1,5 +1,5 @@
 
-var estimates = makeLyftAPICalls(40.447492, -79.943451, 40.443872, -79.914696, 2);
+var estimates = makeLyftAPICalls(40.091923, -75.223786, 40.177362, -75.275134, 2);
 console.log("obj:  " + JSON.parse(estimates));
 
 function makeLyftAPICalls(startLat, startLong, endLat, endLong, radius) {
