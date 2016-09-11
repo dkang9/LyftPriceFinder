@@ -100,12 +100,12 @@ Controller for the map page
   });
 
   var toRet = {
-    "estimates": estimates,
+    // "estimates": estimates,
     "min1": estimates[0],
     "min2": estimates[1],
     "min3": estimates[2],
     "min4": estimates[3],
-    "min5": estimates[4],
+    "min5": estimates[4]
   };
   $rootScope.starter = (minObj["start_lat"],minObj["start_lng"])
   $rootScope.end = (minObj["end_lat"],minObj["end_lng"])
