@@ -15,7 +15,7 @@ Controller for the map page
   $scope.makeLyftAPICalls = function() {
   //this token needs to be updated after authentication expires
   var access_token = "gAAAAABX1IBbdgXV30khHMX5AGjIGdJYQoTcGZWYCvimbyysX7boysJshFGFdvmkEP01_glyy2w87ooD72qxqniFyVfnBEOHott2s6_q4DYtau1BHYBiHBaQIwFaf08IhkN0ubls6-rIDr1kc4O15dW_g_XipxjWcFWwJJtG80mVRF6mFV_fLDS235zUEZbwcfj4tH28kI2MLHibNKhLTQRNdLcYT_A25A==";
-  var startAddress =  $scope.start.split(" ").join("+");
+  var startAddress =  $scope.starter.split(" ").join("+");
   var endAddress = $scope.end.split(" ").join("+");
   var radius = $scope.radius
   var apiKey = "AIzaSyDoGtHRKWmO2BM8Pw9zpkrzv9UgxOxZxOM"
@@ -185,36 +185,31 @@ Controller for the directions page
         };
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-        var result = $rootScope.result
+        var result = JSON.parse($rootScope.result);
 
 console.log(result)
           var marker = new google.maps.Marker({
-              position: {lat: parseInt(result["min1"]["start_lat"]), lng:  parseInt(result["min1"]["start_lng"])},
-              label: labels[i-1],
+              position: {lat: parseInt(result.min1.start_lat.toString()), lng:  parseInt(result.min1.start_lng.toString())},
               map: map,
               title: 'Hello World!'
           });
                     var marker = new google.maps.Marker({
               position: {lat: parseInt(result["min2"]["start_lat"]), lng:  parseInt(result["min2"]["start_lng"])},
-              label: labels[i-1],
               map: map,
               title: 'Hello World!'
           });
                               var marker = new google.maps.Marker({
               position: {lat: parseInt(result["min3"]["start_lat"]), lng:  parseInt(result["min3"]["start_lng"])},
-              label: labels[i-1],
               map: map,
               title: 'Hello World!'
           });
                                         var marker = new google.maps.Marker({
               position: {lat: parseInt(result["min4"]["start_lat"]), lng:  parseInt(result["min4"]["start_lng"])},
-              label: labels[i-1],
               map: map,
               title: 'Hello World!'
           });
                                                   var marker = new google.maps.Marker({
               position: {lat: parseInt(result["min5"]["start_lat"]), lng:  parseInt(result["min5"]["start_lng"])},
-              label: labels[i-1],
               map: map,
               title: 'Hello World!'
           });
