@@ -148,6 +148,7 @@ Controller for the directions page
         };
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
  
         navigator.geolocation.getCurrentPosition(function(pos) {
             map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
@@ -162,7 +163,36 @@ Controller for the directions page
     }
 
     else {
-      //function that shows the directions google maps api that uses the root vars
+        console.log("hello")
+        var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
+        var labels = '12345'
+        var mapOptions = {
+            "center": myLatlng,
+            "zoom": 16,
+            "mapTypeId": google.maps.MapTypeId.ROADMAP
+        };
+ 
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        for  (i=1; i<6, i++1) {
+          var marker = new google.maps.Marker({
+              position: {lat: bestChoices[i-1]["start_lat"], lng:  bestChoices[i]["start_long"]},
+              label: labels[i-1],
+              map: map,
+              title: 'Hello World!'
+          });
+        }
+ 
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            var myLocation = new google.maps.Marker({
+                "position": new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                "map": map,
+                "title": "My Location"
+            });
+        });
+ 
+        $scope.map = map;
     }
 
 }
