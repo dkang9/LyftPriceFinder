@@ -1,9 +1,30 @@
-<ion-view view-title="Directions" class="">
-<ion-content scroll="false">
-
-
-
-
-
+<!DOCTYPE html>
+<html>
+  <ion-view view-title="HeatMap" class="">
+<ion-content id = "map">
+  <div id="map"></div>
 </ion-content>
+
+  <div>
+  <form name="contact" action ="" method = "post">
+  	<label class="item item-input" id = "start">
+			<span class="input-label">Starting Location:</span>
+			<input type="text" name="start">
+		</label>
+		<label class="item item-input">
+		  <span class="input-label">Destination:</span>
+		  <input type="text" name="end">
+		</label>
+		<label class="item item-input">
+		  <span class="input-label">Maximum Distance (Mile):</span>
+		  <input type="number" name="radius">
+		</label>
+		<button type="submit" value="Submit"class="button button-positive" onclick="makeLyftAPICalls(start,end,radius)">
+			Submit
+		</button>
+  </form>
+  </div>
+
 </ion-view>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDCdnJhrHu5eLH3kWx1j3nbQc-rdLISX_Y&sensor=true"></script>
+</html>

@@ -3,9 +3,21 @@
 
   <div>
   <form name="contact" action ="" method = "post">
-  	Starting Location<input type="text" size = "30" name = "start">
-  	Ending Location  <input type="text" size = "30" name = "end">
-  	<input type="submit" value="Submit" name = "submit">
+  	<label class="item item-input">
+			<span class="input-label">Starting Location:</span>
+			<input type="text" name="start">
+		</label>
+		<label class="item item-input">
+		  <span class="input-label">Destination:</span>
+		  <input type="text" name="end">
+		</label>
+		<label class="item item-input">
+		  <span class="input-label">Maximum Distance (Mile):</span>
+		  <input type="number" name="distance">
+		</label>
+		<button type="submit" value="Submit"class="button button-positive" onclick="templates/directions.html">
+			Submit
+		</button>
   </form>
   </div>
 
