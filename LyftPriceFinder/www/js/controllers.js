@@ -51,7 +51,7 @@ Controller for the map page
   var minFare = Number.MAX_VALUE;
   var minObj = {};
 
-  for (var rad = .1; rad <= radius; rad += radius/4.0) {
+  for (var rad = 0; rad <= radius; rad += radius/4.0) {
   
     for(var i=0; i < numberOfPoints; i++) {
       var x2 = Math.cos(currentAngle) * rad;
