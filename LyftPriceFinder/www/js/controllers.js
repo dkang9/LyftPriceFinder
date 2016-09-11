@@ -3,16 +3,16 @@ angular.module('lyftpricefinder.controllers', ['ionic'])
 /*
 Controller for the map page
 */
-.controller('MapCtrl', function($scope, $ionicLoading, $compile) {
-
-function makeLyftAPICalls(start,end,radius) {
+.controller('MapCtrl', function($scope) {
+  $scope.makeLyftAPICalls = function() {
   //this token needs to be updated after authentication expires
-  access_token = "gAAAAABX1IBbdgXV30khHMX5AGjIGdJYQoTcGZWYCvimbyysX7boysJshFGFdvmkEP01_glyy2w87ooD72qxqniFyVfnBEOHott2s6_q4DYtau1BHYBiHBaQIwFaf08IhkN0ubls6-rIDr1kc4O15dW_g_XipxjWcFWwJJtG80mVRF6mFV_fLDS235zUEZbwcfj4tH28kI2MLHibNKhLTQRNdLcYT_A25A==";
-  var startAddress =  start.replace(" ","+")
-  var endAddress = end.replace(" ","+")
-  apiKey = "AIzaSyDoGtHRKWmO2BM8Pw9zpkrzv9UgxOxZxOM"
-  geocodingStart = "https://maps.googleapis.com/maps/api/geocode/json?address=" + startAddress + "&key=" + apiKey
-  geocodingEnd = "https://maps.googleapis.com/maps/api/geocode/json?address=" + endAddress + "&key=" + apiKey
+  var access_token = "gAAAAABX1IBbdgXV30khHMX5AGjIGdJYQoTcGZWYCvimbyysX7boysJshFGFdvmkEP01_glyy2w87ooD72qxqniFyVfnBEOHott2s6_q4DYtau1BHYBiHBaQIwFaf08IhkN0ubls6-rIDr1kc4O15dW_g_XipxjWcFWwJJtG80mVRF6mFV_fLDS235zUEZbwcfj4tH28kI2MLHibNKhLTQRNdLcYT_A25A==";
+  var startAddress =  $scope.start.replace(" ","+")
+  var endAddress = $scope.end.replace(" ","+")
+  var radius = $scope.radius
+  var apiKey = "AIzaSyDoGtHRKWmO2BM8Pw9zpkrzv9UgxOxZxOM"
+  var geocodingStart = "https://maps.googleapis.com/maps/api/geocode/json?address=" + startAddress + "&key=" + apiKey
+  var geocodingEnd = "https://maps.googleapis.com/maps/api/geocode/json?address=" + endAddress + "&key=" + apiKey
   var startLat = geocodingStart["results"]["geometry"]["location"]["lat"]
   var startLong = geocodingStart["results"]["geometry"]["location"]["long"]
   var endLat = geocodingEnd["results"]["geometry"]["location"]["lat"]
@@ -73,11 +73,6 @@ function makeLyftAPICalls(start,end,radius) {
   return JSON.stringify(toRet);
 
 }
-
-
-var directionsDisplay;
-var directionsService = new google.maps.DirectionsService();
-var map;
 
 
 })

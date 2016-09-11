@@ -9,17 +9,17 @@
   <form ng-submit="submit()" ng-controller="MapCtrl">
   	<label class="item item-input" id = "start">
 			<span class="input-label">Starting Location:</span>
-			<input type="text" name="start">
+			<input type="text" ng-model="start">
 		</label>
 		<label class="item item-input">
 		  <span class="input-label">Destination:</span>
-		  <input type="text" name="end">
+		  <input type="text" ng-model="end">
 		</label>
 		<label class="item item-input">
 		  <span class="input-label">Maximum Distance (Mile):</span>
-		  <input type="number" name="radius">
+		  <input type="number" ng-model="radius">
 		</label>
-		<button  type="submit" id="submit" value="Submit" class="button button-positive">
+		<button  type="submit" id="submit" value="Submit" class="button button-positive" ng-click="makeLyftAPICalls()">
 			Submit
 		</button>	
   </div>
