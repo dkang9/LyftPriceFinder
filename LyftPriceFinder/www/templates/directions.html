@@ -6,7 +6,7 @@
 </ion-content>
 
   <div>
-  <form name="contact" action ="" method = "post">
+  <form ng-submit="submit()" ng-controller="MapCtrl">
   	<label class="item item-input" id = "start">
 			<span class="input-label">Starting Location:</span>
 			<input type="text" name="start">
@@ -19,12 +19,11 @@
 		  <span class="input-label">Maximum Distance (Mile):</span>
 		  <input type="number" name="radius">
 		</label>
-		<button type="submit" value="Submit"class="button button-positive" onclick="makeLyftAPICalls(start,end,radius)">
+		<button  type="submit" id="submit" value="Submit" class="button button-positive">
 			Submit
-		</button>
-  </form>
+		</button>	
   </div>
-
+	</form>
 </ion-view>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDCdnJhrHu5eLH3kWx1j3nbQc-rdLISX_Y&sensor=true"></script>
 </html>

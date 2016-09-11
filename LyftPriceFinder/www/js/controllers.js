@@ -3,7 +3,7 @@ angular.module('lyftpricefinder.controllers', ['ionic'])
 /*
 Controller for the map page
 */
-.controller('MapCtrl', function($scope) {
+.controller('MapCtrl', function($scope, $ionicLoading, $compile) {
 
 function makeLyftAPICalls(start,end,radius) {
   //this token needs to be updated after authentication expires
@@ -75,6 +75,9 @@ function makeLyftAPICalls(start,end,radius) {
 }
 
 
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
 
 
 })
