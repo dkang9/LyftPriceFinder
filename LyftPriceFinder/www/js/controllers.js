@@ -3,6 +3,7 @@ angular.module('lyftpricefinder.controllers', ['ionic'])
     $rootScope.starter ="start";
     $rootScope.end = "end";
     $rootScope.radius = 0
+    $rootScope.result = ""
 
 })
 
@@ -50,7 +51,7 @@ Controller for the map page
   var minFare = Number.MAX_VALUE;
   var minObj = {};
 
-  for (var rad = .1; rad <= radius; rad += radius/4.0 {
+  for (var rad = .1; rad <= radius; rad += radius/4.0) {
   
     for(var i=0; i < numberOfPoints; i++) {
       var x2 = Math.cos(currentAngle) * rad;
@@ -104,6 +105,7 @@ Controller for the map page
   };
   $rootScope.starter = (minObj["start_lat"],minObj["start_lng"])
   $rootScope.end = (minObj["end_lat"],minObj["end_lng"])
+  $rootScope.result = JSON.stringify(toRet)
   console.log(toRet);
   return JSON.stringify(toRet);
 
@@ -183,9 +185,9 @@ Controller for the directions page
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-        for  (i=1; i<6, i++1) {
+        for  (i=1; i<6; i++) {
           var marker = new google.maps.Marker({
-              position: {lat: bestChoices[i-1]["start_lat"], lng:  bestChoices[i]["start_long"]},
+              position: {lat: $rootScope.result[i-1]["start_lat"], lng:  $rootScope.result[i]["start_long"]},
               label: labels[i-1],
               map: map,
               title: 'Hello World!'
