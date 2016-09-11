@@ -2,26 +2,8 @@ angular.module('lyftpricefinder.controllers', ['ionic'])
 .run(function($rootScope, $ionicLoading, $compile) {
     $rootScope.starter ="start";
     $rootScope.end = "end";
-    $rootScope.radius = "radius"
+    $rootScope.radius = 0
 
-    $rootScope.googleMap = function(mapScope) {
-      var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
-      var mapOptions = {
-            center: myLatlng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        mapScope = map;     
-                navigator.geolocation.getCurrentPosition(function(pos) {
-                map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            var myLocation = new google.maps.Marker({
-                position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-                map: map,
-                title: "My Location"
-            });
-        });
-             
-}
 })
 
 
@@ -133,8 +115,12 @@ Controller for the heatmap page
 Controller for the directions page
 */
 .controller('DirectionsCtrl', function($scope, $ionicLoading, $compile,$rootScope) {
+  console.log("helloa")
+
   $scope.makeGoogleMap = function(num = 0) {
+    console.log("hello1")
       if (num==0) {
+        console.log("hello")
         var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
  
         var mapOptions = {
@@ -162,6 +148,7 @@ Controller for the directions page
     }
 
 }
+$scope.makeGoogleMap();
 })
 
 

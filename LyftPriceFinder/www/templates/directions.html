@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
+
   <ion-view view-title="HeatMap" class="">
 <ion-content id = "map">
   <div id="map"></div>
 </ion-content>
 
+
   <div ng-controller="DirectionsCtrl">
+ 
   <form ng-submit="submit()" ng-controller="MapCtrl">
   	<label class="item item-input" id = "start">
 			<span class="input-label">Starting Location:</span>
@@ -19,11 +22,14 @@
 		  <span class="input-label">Maximum Distance (Mile):</span>
 		  <input type="number" ng-model="radius">
 		</label>
-		<button  type="submit" id="submit" value="Submit" class="button button-positive" ng-click="makeLyftAPICalls() ; makeGoogleMap(1)">
+		<button  type="submit" id="submit" value="Submit" class="button button-positive" ng-click="makeLyftAPICalls() ; makeGoogleMap(num=1)">
 			Submit
 		</button>	
   </div>
 	</form>
 </ion-view>
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDCdnJhrHu5eLH3kWx1j3nbQc-rdLISX_Y&sensor=true"></script>
+ <script> 
+alert("Ready!");
+        </script>
 </html>
