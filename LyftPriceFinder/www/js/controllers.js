@@ -15,8 +15,8 @@ Controller for the map page
   $scope.makeLyftAPICalls = function() {
   //this token needs to be updated after authentication expires
   var access_token = "gAAAAABX1IBbdgXV30khHMX5AGjIGdJYQoTcGZWYCvimbyysX7boysJshFGFdvmkEP01_glyy2w87ooD72qxqniFyVfnBEOHott2s6_q4DYtau1BHYBiHBaQIwFaf08IhkN0ubls6-rIDr1kc4O15dW_g_XipxjWcFWwJJtG80mVRF6mFV_fLDS235zUEZbwcfj4tH28kI2MLHibNKhLTQRNdLcYT_A25A==";
-  var startAddress =  $scope.start.replace(" ","+")
-  var endAddress = $scope.end.replace(" ","+")
+  var startAddress =  $scope.start.split(" ").join("+");
+  var endAddress = $scope.end.split(" ").join("+");
   var radius = $scope.radius
   var apiKey = "AIzaSyDoGtHRKWmO2BM8Pw9zpkrzv9UgxOxZxOM"
   var geocodingStart = "https://maps.googleapis.com/maps/api/geocode/json?address=" + startAddress + "&key=" + apiKey
