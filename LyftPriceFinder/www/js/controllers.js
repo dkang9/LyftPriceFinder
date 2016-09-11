@@ -1,8 +1,8 @@
 angular.module('lyftpricefinder.controllers', ['ionic'])
 .run(function($rootScope, $ionicLoading, $compile) {
-    $rootScope.starter ="start";
-    $rootScope.end = "end";
-    $rootScope.radius = 0
+    $rootScope.starter ="1000 morewood ave";
+    $rootScope.end = "6607 woodwell street";
+    $rootScope.radius = .5
     $rootScope.result = ""
 
 })
@@ -144,12 +144,9 @@ Controller for the heatmap page
 Controller for the directions page
 */
 .controller('DirectionsCtrl', function($scope, $ionicLoading, $compile,$rootScope) {
-  console.log("helloa")
 
   $scope.makeGoogleMap = function(num = 0) {
-    console.log("hello1")
       if (num==0) {
-        console.log("hello")
         var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
  
         var mapOptions = {
@@ -184,16 +181,19 @@ Controller for the directions page
         };
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
+        var result = $rootScope.result
+        console.log(result)
+console.log(result["estimates"])
         for  (i=1; i<6; i++) {
+          console.log(i)
           var marker = new google.maps.Marker({
-              position: {lat: $rootScope.result[i]["start_lat"], lng:  $rootScope.result[i]["start_lng"]},
+              position: {lat: parseInt(result["estimates"][i-1]["start_lat"]), lng:  parseInt(result.estimates[i-1]["start_lng"])},
               label: labels[i-1],
               map: map,
               title: 'Hello World!'
           });
         }
- 
+   console.log("helloa")
         navigator.geolocation.getCurrentPosition(function(pos) {
             map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
             var myLocation = new google.maps.Marker({
