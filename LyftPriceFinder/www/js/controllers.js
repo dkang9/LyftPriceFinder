@@ -186,17 +186,38 @@ Controller for the directions page
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
         var result = $rootScope.result
-        console.log(result)
-console.log(result["estimates"])
-        for  (i=1; i<6; i++) {
-          console.log(i)
+
+console.log(result)
           var marker = new google.maps.Marker({
-              position: {lat: parseInt(result["estimates"][i-1]["start_lat"]), lng:  parseInt(result.estimates[i-1]["start_lng"])},
+              position: {lat: parseInt(result["min1"]["start_lat"]), lng:  parseInt(result["min1"]["start_lng"])},
               label: labels[i-1],
               map: map,
               title: 'Hello World!'
           });
-        }
+                    var marker = new google.maps.Marker({
+              position: {lat: parseInt(result["min2"]["start_lat"]), lng:  parseInt(result["min2"]["start_lng"])},
+              label: labels[i-1],
+              map: map,
+              title: 'Hello World!'
+          });
+                              var marker = new google.maps.Marker({
+              position: {lat: parseInt(result["min3"]["start_lat"]), lng:  parseInt(result["min3"]["start_lng"])},
+              label: labels[i-1],
+              map: map,
+              title: 'Hello World!'
+          });
+                                        var marker = new google.maps.Marker({
+              position: {lat: parseInt(result["min4"]["start_lat"]), lng:  parseInt(result["min4"]["start_lng"])},
+              label: labels[i-1],
+              map: map,
+              title: 'Hello World!'
+          });
+                                                  var marker = new google.maps.Marker({
+              position: {lat: parseInt(result["min5"]["start_lat"]), lng:  parseInt(result["min5"]["start_lng"])},
+              label: labels[i-1],
+              map: map,
+              title: 'Hello World!'
+          });
    console.log("helloa")
         navigator.geolocation.getCurrentPosition(function(pos) {
             map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
